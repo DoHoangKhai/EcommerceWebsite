@@ -50,6 +50,5 @@
 	--> reponsitory: 'link github'
 	--> trello: email trello
 	--> link firebase
-		=> j.bnguyendzu@gmail.com
 
 - buổi 9: Tên đề tài/ logo/ github/ firebase/ trello
