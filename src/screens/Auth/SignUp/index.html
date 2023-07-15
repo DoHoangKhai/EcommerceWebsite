@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="logo">
+            <img src="../../../../assets/img/Reading book 1 (1).png" alt="">
+        </div>
+        
+        <div class="input-section">
+            <h1>Create Your Account</h1>
+            <h5>Already have an account? <a href="../SignIn/index.html">Login</a> </h5>
+
+            <form action="">
+                <div id="eyes"></div>
+                <div id="coneyes"></div>
+
+                <label for="username">Username</label>
+                <input type="text" id="username">
+                <div class="message" id="first"></div>
+
+                <label for="Aged">Age</label>
+                <input type="text" id="Aged">
+                <div class="message" id="last"></div>
+
+                <label for="PhoneNum">Phone number</label>
+                <input type="text" id="PhoneNum">
+                <div class="message" id="last"></div>
+
+                <label for="email">Email</label>
+                <input type="email" id="email">
+                <div class="message" id="mail"></div>
+
+                <label for="pass">Password</label>
+                <input type="password" id="pass">
+                <div class="message" id="password"></div>
+
+                <label for="con-pass">Confirm Password</label>
+                <input type="password" id="con-pass">
+                <div class="message" id="con-password"></div>
+
+                <a class="btn-submit" id="b_submit">Register</a>
+            </form>
+
+            <div class="seperate-section">
+                <div class="line"></div>
+                <h3>Or</h3>
+                <div class="line"></div>
+            </div>
+
+            <div class="btn">
+                <div class="btn-social">
+                    <img src="../../../../assets/icons/icons8-facebook.svg" alt="">
+                    <a href="">Countinue with Facebook</a>
+                </div>
+                
+                <div class="btn-social">
+                    <img src="../../../../assets/icons/search 1.svg" alt="">
+                    <a href="">Countinue with Google</a>  
+                </div>           
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js" type="module"></script>
+</body>
+</html>

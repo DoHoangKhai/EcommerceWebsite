@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="logo">
+            <img src="../../../../assets/img/Reading book 1 (1).png" alt="">
+        </div>
+
+        <div class="input-section">
+            <h1>Login</h1>
+            <h5>Don`t have an account?<a href="../SignUp/index.html"> Create Now</a> </h5>
+
+            <form action="">
+                <div id="eyes" onclick="ShowPass()"></div>
+                <label for="email">Email</label>
+                <input type="text" id="email">
+                <div class="message" id="email-text"></div>
+
+
+                <label for="pass">Password</label>
+                <input type="password" id="pass">
+                <div class="message" id="pass-text"></div>
+
+                <a onclick="check()" class="btn-submit" id="b_login">Login</a>
+                <h3>Forgot a password?</h3>
+            </form>
+
+            <div class="seperate-section">
+                <div class="line"></div>
+                <h3>Or</h3>
+                <div class="line"></div>
+            </div>
+
+            <div class="btn">
+                <div class="btn-social">
+                    <img src="../../../../assets/icon/icons8-facebook.svg" alt="">
+                    <a href="">Countinue with Facebook</a>
+                </div>
+                
+                <div class="btn-social">
+                    <img src="../../../../assets/icon/search 1.svg" alt="">
+                    <a href="">Countinue with Google</a>  
+                </div>           
+            </div>
+        </div>
+    </div>
+
+    <script src="./app.js" type="module"></script>
+</body>
+</html>

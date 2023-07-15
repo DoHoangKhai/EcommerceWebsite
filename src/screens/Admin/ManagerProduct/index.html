@@ -6,19 +6,19 @@
     <title>E-commerce Admin</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-</head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <body>
 
     <input type="checkbox" id="nav-toggle">
     <div class="sidebar">
         <div class="sidebar-brand">
-            <h2><span class="lab la-accusoft"></span> <span>Accusoft</span> </h2>
+            <h2><span class="lab la-accusoft"></span> <span>Admin Panel</span> </h2>
         </div>
 
         <div class="sidebar-menu">
             <ul>
                 <li>
-                    <a href="" class="active"><span class="las la-igloo"></span> 
+                    <a href=""><span class="las la-igloo"></span> 
                     <span>Dashboard</span></a>
                 </li>
     
@@ -33,8 +33,8 @@
                 </li>
     
                 <li>
-                    <a href=""><span class="las la-shopping-bag"></span> 
-                    <span>Orders</span></a>
+                    <a href=""  class="active"><span class="las la-shopping-bag"></span> 
+                    <span>Product</span></a>
                 </li>
     
                 <li>
@@ -56,7 +56,7 @@
     </div>
 
     <div class="main-content">
-        <header>
+        <header class="heading">
             <h2>
                 <label for="nav-toggle">
                     <span class="las la-bars"></span>
@@ -80,56 +80,19 @@
         </header>
 
         <main>
-            <div class="cards">
-                <div class="card-single">
-                    <div>
-                        <h1>54</h1>
-                        <span>Customers</span>
-                    </div>
-                    <div>
-                        <span class="las la-users"></span>
-                    </div>
-                </div>
-                
-                <div class="card-single">
-                    <div>
-                        <h1>79</h1>
-                        <span>Projects</span>
-                    </div>
-                    <div>
-                        <span class="las la-clipboard-list"></span>
-                    </div>
-                </div>
-
-                <div class="card-single">
-                    <div>
-                        <h1>124</h1>
-                        <span>Orders</span>
-                    </div>
-                    <div>
-                        <span class="las la-shopping-bag"></span>
-                    </div>
-                </div>
-
-                <div class="card-single">
-                    <div>
-                        <h1>$6k</h1>
-                        <span>Income</span>
-                    </div>
-                    <div>
-                        <span class="lab la-google-wallet"></span>
-                    </div>
-                </div>
-            </div>
+            
 
             <div class="recent-grid">
                 <div class="projects">
                     <div class="card">
                         <div class="card-header">
-                            <h2>Recent Projects</h2>
+                            <h2>Product</h2>
 
-                            <button>See all <span class="las la-arrow-right">
-
+                            <div class="edit-button">
+                                <button data-toggle="modal" data-target="#exampleModal">Add <span class="las la-plus-circle" >
+                                <button data-toggle="modal" data-target="#ModalDelete">Delete <span class="las la-trash">
+                            </div>
+    
                             </span></button>
                         </div>
 
@@ -138,235 +101,75 @@
                                 <table width="100%">
                                     <thead>
                                         <tr>
-                                            <td>Project Title</td>
-                                            <td>Department</td>
-                                            <td>Status</td>
+                                            <td>Id</td>
+                                            <td>Name</td>
+                                            <td>Price</td>
+                                            <td>Stock</td>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>UI/UX Designs</td>
-                                            <td>UI Team</td>
-                                            <td>
-                                                <span class="status purple"></span>
-                                                review
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Web development</td>
-                                            <td>Frontend</td>
-                                            <td>
-                                                <span class="status pink"></span>
-                                                in progress
-                                            </td>
-                                        </tr>
-    
-                                        <tr>
-                                            <td>Ushop app</td>
-                                            <td>Mobile Team</td>
-                                            <td>
-                                                <span class="status orange"></span>
-                                                pending
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>UI/UX Designs</td>
-                                            <td>UI Team</td>
-                                            <td>
-                                                <span class="status purple"></span>
-                                                review
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Web development</td>
-                                            <td>Frontend</td>
-                                            <td>
-                                                <span class="status pink"></span>
-                                                in progress
-                                            </td>
-                                        </tr>
-    
-                                        <tr>
-                                            <td>Ushop app</td>
-                                            <td>Mobile Team</td>
-                                            <td>
-                                                <span class="status orange"></span>
-                                                pending
-                                            </td>
-                                        </tr>
-    
-                                        <tr>
-                                            <td>UI/UX Designs</td>
-                                            <td>UI Team</td>
-                                            <td>
-                                                <span class="status purple"></span>
-                                                review
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Web development</td>
-                                            <td>Frontend</td>
-                                            <td>
-                                                <span class="status pink"></span>
-                                                in progress
-                                            </td>
-                                        </tr>
-    
-                                        <tr>
-                                            <td>Ushop app</td>
-                                            <td>Mobile Team</td>
-                                            <td>
-                                                <span class="status orange"></span>
-                                                pending
-                                            </td>
-                                        </tr>
-                                    </tbody>
+                                    <tbody id="product-body"></tbody>
                                 </table>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="customers">
-                    <div class="card">
-                        <div class="card-header">
-                            <h2>New customer</h2>
-
-                            <button>See all <span class="las la-arrow-right">
-
-                            </span></button>
-                        </div>
-
-                        <div class="card-body">
-                            <div class="customer">
-                                <div class="info">
-                                    <img src="../../../assets/image/AdminAvatar.jpg" width="40px" height="40px">
-                                    <div>
-                                        <h4>Lewis S. Cunningham</h4>
-                                        <small>CEO Excerpt</small>
-                                    </div>
-                                </div>
-                                <div class="contact">
-                                    <span class="las la-user-circle"></span>
-                                    <span class="las la-comment"></span>
-                                    <span class="las la-phone"></span>                      
-                                </div>
-                            </div>
-
-                            <div class="customer">
-                                <div class="info">
-                                    <img src="../../../assets/image/AdminAvatar.jpg" width="40px" height="40px">
-                                    <div>
-                                        <h4>Lewis S. Cunningham</h4>
-                                        <small>CEO Excerpt</small>
-                                    </div>
-                                </div>
-                                <div class="contact">
-                                    <span class="las la-user-circle"></span>
-                                    <span class="las la-comment"></span>
-                                    <span class="las la-phone"></span>                      
-                                </div>
-                            </div>
-
-                            <div class="customer">
-                                <div class="info">
-                                    <img src="../../../assets/image/AdminAvatar.jpg" width="40px" height="40px">
-                                    <div>
-                                        <h4>Lewis S. Cunningham</h4>
-                                        <small>CEO Excerpt</small>
-                                    </div>
-                                </div>
-                                <div class="contact">
-                                    <span class="las la-user-circle"></span>
-                                    <span class="las la-comment"></span>
-                                    <span class="las la-phone"></span>                      
-                                </div>
-                            </div>
-
-                            <div class="customer">
-                                <div class="info">
-                                    <img src="../../../assets/image/AdminAvatar.jpg" width="40px" height="40px">
-                                    <div>
-                                        <h4>Lewis S. Cunningham</h4>
-                                        <small>CEO Excerpt</small>
-                                    </div>
-                                </div>
-                                <div class="contact">
-                                    <span class="las la-user-circle"></span>
-                                    <span class="las la-comment"></span>
-                                    <span class="las la-phone"></span>                      
-                                </div>
-                            </div>
-
-                            <div class="customer">
-                                <div class="info">
-                                    <img src="../../../assets/image/AdminAvatar.jpg" width="40px" height="40px">
-                                    <div>
-                                        <h4>Lewis S. Cunningham</h4>
-                                        <small>CEO Excerpt</small>
-                                    </div>
-                                </div>
-                                <div class="contact">
-                                    <span class="las la-user-circle"></span>
-                                    <span class="las la-comment"></span>
-                                    <span class="las la-phone"></span>                      
-                                </div>
-                            </div>
-
-                            <div class="customer">
-                                <div class="info">
-                                    <img src="../../../assets/image/AdminAvatar.jpg" width="40px" height="40px">
-                                    <div>
-                                        <h4>Lewis S. Cunningham</h4>
-                                        <small>CEO Excerpt</small>
-                                    </div>
-                                </div>
-                                <div class="contact">
-                                    <span class="las la-user-circle"></span>
-                                    <span class="las la-comment"></span>
-                                    <span class="las la-phone"></span>                      
-                                </div>
-                            </div>
-
-                            <div class="customer">
-                                <div class="info">
-                                    <img src="../../../assets/image/AdminAvatar.jpg" width="40px" height="40px">
-                                    <div>
-                                        <h4>Lewis S. Cunningham</h4>
-                                        <small>CEO Excerpt</small>
-                                    </div>
-                                </div>
-                                <div class="contact">
-                                    <span class="las la-user-circle"></span>
-                                    <span class="las la-comment"></span>
-                                    <span class="las la-phone"></span>                      
-                                </div>
-                            </div>
-
-                            <div class="customer">
-                                <div class="info">
-                                    <img src="../../../assets/image/AdminAvatar.jpg" width="40px" height="40px">
-                                    <div>
-                                        <h4>Lewis S. Cunningham</h4>
-                                        <small>CEO Excerpt</small>
-                                    </div>
-                                </div>
-                                <div class="contact">
-                                    <span class="las la-user-circle"></span>
-                                    <span class="las la-comment"></span>
-                                    <span class="las la-phone"></span>                      
-                                </div>
-                            </div>
-
-                            
-                        </div>
-
                     </div>
                 </div>
             </div>
         </main>
     </div>
 
-    <script src="app.js"></script>
+
+  <!-- Modal -->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <input type="number" placeholder="Enter ID" id="NewID">
+                <input type="text" placeholder="Enter Image Link" id="NewImage">
+                <input type="text" placeholder="Enter Product Name" id="NewName">
+                <input type="text" placeholder="Enter Price" id="NewPrice">
+                <input type="number" placeholder="Enter Rating" id="NewRating">
+                <input type="email" placeholder="Enter Stock" id="NewStock">
+                <input type="text" placeholder="Enter Description" id="NewDescription">
+                <input type="text" placeholder="Enter FreeShipping Type" id="NewShipping">
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="butn" id="AddItem">Add Item</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <input type="number" placeholder="Enter ID of Item want to delete" id="RemoveID">
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="butn" id="RemoveItem">Remove Item</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    
+    <script src="app.js" type="module"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

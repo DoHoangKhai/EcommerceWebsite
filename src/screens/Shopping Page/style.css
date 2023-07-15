@@ -570,8 +570,8 @@ main{
 }
 
 .product-title{
-    margin-left: 25px;
-
+    margin-left: 20px;
+    position: relative;
 }
 
 .product-title h5{
@@ -580,9 +580,10 @@ main{
 }
 
 .product-title h3{
+    position: absolute;
     color: var(--first-color);
     font-weight: var(--fw5);
-    margin-bottom: 15px;
+    top: 50%;
 }
 
 .product-title h5:hover{
@@ -595,7 +596,7 @@ main{
 }
 
 .product-title .first{
-    margin: 15px 0;
+    margin: 3px 0 10px 0;
 }
 
 footer{
@@ -703,12 +704,14 @@ footer .footer-box ul li{
 .addCart{
     width: 180px;
     padding: 9.5px;
-    margin-top: 2px;
     border: none;
     background-color: var(--first-color);
     color: var(--light-bg-color);
     font-weight: var(--fw6);
     cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 165px;
 }
 
 .modal-item h3{
@@ -752,6 +755,16 @@ footer .footer-box ul li{
     margin-left: 15px;
 }
 
+.bottom-detail{
+    position: absolute;
+    bottom: 0;
+}
+
+.row{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 
 @media (min-width: 992px) {
     .container{
@@ -783,12 +796,10 @@ footer .footer-box ul li{
     /* Mega menu */
     nav .mega{
         position: absolute;
-        width: var(--percent100);
+        width: 135px;
         height: auto;
         top: auto;
-        left: 0;
-        right: 0;
-        padding: 2.5em;
+        padding: 2em;
         line-height: 2em;
         background-color: var(--light-bg-color);
         box-shadow: rgb(0 0 0 / 20%) 0 30px 20px -30px;
@@ -806,8 +817,14 @@ footer .footer-box ul li{
     }
 
     nav .mega h4{
-        font-size: 0.8em;
+        font-size: 1em;
         text-transform: uppercase;
+        cursor: pointer;
+    }
+
+    nav .mega h4:hover{
+        color: var(--second-color);
+        text-decoration: underline;
     }
 
     nav .mega ul{

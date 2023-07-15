@@ -1,0 +1,198 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.wrapper{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    background: #FFD834;
+}
+
+.wrapper .logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper .logo img{
+    object-fit: contain;
+    width: 550px;
+    height: 550px;
+}
+
+.wrapper .input-section{
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper .input-section h1{
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 32px;
+    color: #304D95;
+    margin-top: 59px;
+    margin-bottom: 0;
+}
+
+.wrapper .input-section h5{
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 17px;
+    color: #304D95;
+    margin-top: 9px;
+}
+
+.wrapper .input-section h5 a{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.wrapper form{
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper form label{
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 16px;
+    color: #304D95;
+    margin-left: 8px;
+}
+
+
+.wrapper form input{
+    width: 80%;
+    background: #FFFFFF;
+    border: 1.5px solid #6FCF97;
+    border-radius: 9px;
+    padding: 11px 18px;
+    font-family: 'Source Sans Pro';
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 17px;
+    letter-spacing: 0.35px;
+    color: #333333;
+    mix-blend-mode: normal;
+}
+
+.wrapper .input-section form .message{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 17px;
+    color: #FF0C3E;
+    margin-bottom: 10px;
+}
+
+.wrapper form .btn-submit{
+    width: 80%;
+    padding: 19px 20px;
+    text-align: center;
+    background: linear-gradient(271.15deg, #FE904B 7.64%, #FB724C 90.68%), #EE5757;
+    backdrop-filter: blur(1.43525px);
+    text-decoration: none;
+    border-radius: 9px;
+    margin-top: 15px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 16px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+#eyes{
+    width: 27px;
+    height: 22px;
+    background-image: url(../../../../assets/icon/icon\ eye.svg);
+    background-size: cover;
+    position: absolute;
+    left: 88.5%;
+    top: 57%;
+    cursor: pointer;
+}
+
+#coneyes{
+    width: 27px;
+    height: 22px;
+    background-image: url(../../../../assets/icon/icon\ eye.svg);
+    background-size: cover;
+    position: absolute;
+    left: 88.5%;
+    top: 67.5%;
+    cursor: pointer;
+}
+
+#eyes img{
+    object-fit: cover;
+    width: 100%;
+}
+
+#coneyes img{
+    object-fit: cover;
+    width: 100%;
+}
+
+.seperate-section{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 11px;
+    margin-bottom: 12px;
+}
+
+.seperate-section h3{
+    margin: 0px 25px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 20px;
+    color: #304D95;
+}
+
+.seperate-section .line{
+    width: 76px;
+    height: 0px;
+    border: 0.7px solid #304D95;
+}
+
+.btn{
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-social{
+    width: 80%;
+    padding: 19px 20px;
+    text-align: center;
+    background: #E3F1FE;
+    border: 1.5px solid #207198;
+    backdrop-filter: blur(1.5px);
+    border-radius: 9px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.btn .btn-social a{
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+    color: #304D95;
+    position: relative;
+}
+
+.btn .btn-social img{
+    height: 30px;
+    width: 30px;
+    margin-right: 15px;
+    position: absolute;
+    right: 72%;
+    top: 25%;
+}
