@@ -63,7 +63,60 @@ const getDataProduct = async () => {
   
 };
 
-getDataProduct()
+var stdNo = 0
+
+
+
+function AddItemToTable(id, username, age, email, phonenumber, address){
+    let ItemRow = document.createElement("tr")
+    let TdName = document.createElement("td")
+    let TdID = document.createElement("td")
+    let TdAge = document.createElement("td")
+    let TdEmail = document.createElement("td")
+    let TdPhone = document.createElement("td")
+    let TdAddress = document.createElement("td")
+
+    TdName.innerHTML = username
+    TdID.innerHTML = id
+    TdAge.innerHTML = age
+    TdEmail.innerHTML = email
+    TdPhone.innerHTML = phonenumber
+    TdAddress.innerHTML = address
+
+    ItemRow.appendChild(TdID)
+    ItemRow.appendChild(TdName)
+    ItemRow.appendChild(TdAge)
+    ItemRow.appendChild(TdEmail)
+    ItemRow.appendChild(TdPhone)
+    ItemRow.appendChild(TdAddress)
+
+    AdvisorTable.appendChild(ItemRow)
+}
+
+function AddAllItemTable(Product){
+    stdNo = 0
+    AdvisorTable.innerHTML = ""
+    Product.forEach(element => {
+        AddItemToTable(element.id, element.username, element.age, element.email, element.phonenumber, element.address);
+    })
+}
+
+function GetAllData(){
+    const itemsRef = ref(database)
+
+    get(child(itemsRef, "Newusers"))
+    .then((snapshot) =>{
+        var product =[];
+
+        snapshot.forEach(childSnapshot => {
+            product.push(childSnapshot.val());
+        });
+
+        AddAllItemTable(product)
+    })
+}
+
+window.onload = GetAllData
 
 
 function getUserProduct(){
@@ -88,8 +141,12 @@ function getUserProduct(){
 }
 
 
-getUserProduct()
 
 document.getElementById("gotoProduct").addEventListener('click', function(){
-    location.replace("./ManagerProduct/index.html")
+    location.replace("../ManagerProduct/index.html")
 })
+
+document.getElementById("gotoHome").addEventListener('click', function(){
+    location.replace("../index.html")
+})
+

@@ -291,6 +291,20 @@ tr td:last-child{
     overflow-x: auto;
 }
 
+#gotoUser{
+    color: #fff;
+    cursor: pointer;
+}
+
+#gotoHome{
+    color: #fff;
+    cursor: pointer;
+}
+
+#gotoUser:hover{
+    text-decoration: underline;
+}
+
 .table-responsive input{
     padding: 10px;
     border-radius: 5px;
@@ -300,6 +314,11 @@ tr td:last-child{
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+#product-body td img{
+    width: 53px;
+    height: 34px;
 }
 
 .butn{

@@ -56,6 +56,7 @@ function check(){
     })
 
     alert("User Loged in")
+    location.replace("../../Shopping Page/index.html")
   })
   .catch((error) => {
     const errorCode = error.code;

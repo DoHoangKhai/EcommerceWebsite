@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics.js";
-import { getDatabase } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
+import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
 import { getFirestore, getDocs, collection} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -30,40 +30,53 @@ const db = getFirestore(app);
 const Cart = document.getElementById("cart")
 const listProduct = collection(db, "Product")
 
-const getDataProduct = async () => {
-    try{
-        const data = await getDocs(listProduct);
-        let response =  data.docs.map((item) => item.data());
-        console.log(response);
-  
-        const productsContainer = document.getElementById("product-body");
-  
-        response.map((item) => {
-            const rowItem = document.createElement("tr");
-  
-            const ColName = document.createElement("td")
-            ColName.innerText = item.name
-  
-            const ColPrice = document.createElement("td")
-            ColPrice.innerText = "$"+item.price
+var stdNo = 0
 
-            const ColStock = document.createElement("td")
-            ColStock.innerText = item.stock + " Remaining"
+const AdvisorTable = document.getElementById("product-body")
 
-            rowItem.appendChild(ColName)
-            rowItem.appendChild(ColPrice)
-            rowItem.appendChild(ColStock)
-  
-            productsContainer.appendChild(rowItem)
-        })
-    } catch (error) {
-        console.error("Error occure", error);
-        throw error;
-    }
-  
-};
+function AddItemToTable(name, price, stock){
+    let ItemRow = document.createElement("tr")
+    let TdName = document.createElement("td")
+    let TdPrice = document.createElement("td")
+    let TdStock = document.createElement("td")
 
-getDataProduct()
+    TdName.innerHTML = name
+    TdPrice.innerHTML = price
+    TdStock.innerHTML = stock
+
+    ItemRow.appendChild(TdName)
+    ItemRow.appendChild(TdPrice)
+    ItemRow.appendChild(TdStock)
+
+    AdvisorTable.appendChild(ItemRow)
+}
+
+
+function AddAllItemTable(Product){
+    stdNo = 0
+    AdvisorTable.innerHTML = ""
+    Product.forEach(element => {
+        AddItemToTable(element.name, element.price, element.stock);
+    })
+}
+
+function GetAllData(){
+    const itemsRef = ref(database)
+
+    get(child(itemsRef, "NewProduct"))
+    .then((snapshot) =>{
+        var product =[];
+
+        snapshot.forEach(childSnapshot => {
+            product.push(childSnapshot.val());
+        });
+        stdNo = product.length
+        AddAllItemTable(product)
+    })
+}
+
+window.onload = GetAllData
+
 
 document.getElementById("gotoProduct").addEventListener('click', function(){
     location.replace("./ManagerProduct/index.html")
@@ -72,4 +85,7 @@ document.getElementById("gotoProduct").addEventListener('click', function(){
 document.getElementById("gotoUser").addEventListener('click', function(){
     location.replace("./ManagerUser/index.html")
 })
+
+
+
 

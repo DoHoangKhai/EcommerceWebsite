@@ -46,11 +46,14 @@
     padding-left: 0rem;
 }
 
+
+
 .sidebar-menu a{
     padding-left: 1rem;
     display: block;
     color: #fff;
     font-size: 1.1rem;
+
 }
  
 .sidebar-menu a.active{
@@ -64,6 +67,9 @@
 .sidebar-menu a span:first-child{
     font-size: 1.5rem;
     padding-right: 1rem;
+}
+.sidebar-menu a span:hover{
+    text-decoration: underline;
 }
 
 #nav-toggle:checked + .sidebar{
@@ -100,7 +106,7 @@
     margin-left: 345px;
 }
 
-header{
+.heading{
     background: #fff;
     display: flex;
     justify-content: space-between;
@@ -116,6 +122,20 @@ header{
 
 #nav-toggle{
     display: none;
+}
+
+#gotoProduct{
+    color: #fff;
+    cursor: pointer;
+}
+
+#gotoHome{
+    color: #fff;
+    cursor: pointer;
+}
+
+#gotoProduct:hover{
+    text-decoration: underline;
 }
 
 header h2{
@@ -154,6 +174,15 @@ header label span{
     align-items: center;
 }
 
+.card-header .edit-button{
+    display: flex;
+    gap: 20px;
+} 
+
+.card-header .edit-button button{
+    cursor: pointer;
+}
+
 .user-wrapper img{
     border-radius: 50%;
     margin-right: .5rem;
@@ -188,6 +217,10 @@ main{
 .card-single div:last-child span{
     font-size: 3rem;
     color: var(--main-color);
+}
+
+.sidebar-menu ul li{
+    cursor: pointer;
 }
 
 .card-single div:first-child span{
@@ -318,5 +351,11 @@ tr td:last-child{
     display: inline-block;
     margin-left: .5rem;
     color: var(--main-color);
+}
+
+.modal-body{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 

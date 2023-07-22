@@ -59,7 +59,7 @@
                             <nav class="mobile-hide">
                                 <ul class="flexitem second-links">
                                     <li><a href="#">Home</a></li>
-                                    <li><a href="#">Shop</a></li>
+                                    <li><a id="all-item-show">Shop</a></li>
                                     <li class="has-child">
                                         <a href="#">Food Type
                                             <div class="icon-small"><i class="ri-arrow-down-s-line"></i></div>
@@ -69,11 +69,10 @@
                                                 <div class="wrapper">
                                                     <div class="flexcol">
                                                         <div class="row">
-                                                            <h4>America</h4>
-                                                            <h4>Vietnam</h4>
-                                                            <h4>India</h4>
-                                                            <h4>Japan</h4>
-
+                                                            <h4 id="AmericaFood">America</h4>
+                                                            <h4 id="VietnamFood">Vietnam</h4>
+                                                            <h4 id="IndiaFood">India</h4>
+                                                            <h4 id="JapanFood">Japan</h4>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -134,8 +133,8 @@
             <!-- Header Search -->
 
             <div class="search-bar">
-                <span class="icon-large"><i class="ri-search-line"></i></span>
-                <input type="text" placeholder="Search for product">
+                <span class="icon-large"><i class="ri-search-line" id="search-icon"></i></span>
+                <input type="text" placeholder="Search for product" id="searchProduct">
             </div>
 
             <!-- Header Cover -->
@@ -149,7 +148,7 @@
                 <div class="shop-body">
                     <div class="sale-product-title">
                         <div class="big-circle"></div>
-                        <h3>Trending Product</h3>
+                        <h3 id="title-cate">Trending Product</h3>
                     </div>
 
                     <div id="product-body" class="shop-cards"></div>

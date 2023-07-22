@@ -18,39 +18,20 @@
         <div class="sidebar-menu">
             <ul>
                 <li>
-                    <a href=""><span class="las la-igloo"></span> 
+                    <a id="gotoHome"><span class="las la-igloo"></span> 
                     <span>Dashboard</span></a>
                 </li>
     
                 <li>
-                    <a href=""><span class="las la-users"></span> 
+                    <a id="gotoUser"><span class="las la-users"></span> 
                     <span>Customers</span></a>
                 </li>
                 
                 <li>
-                    <a href=""><span class="las la-clipboard-list"></span> 
-                    <span>Projects</span></a>
-                </li>
-    
-                <li>
                     <a href=""  class="active"><span class="las la-shopping-bag"></span> 
                     <span>Product</span></a>
                 </li>
-    
-                <li>
-                    <a href=""><span class="las la-receipt"></span> 
-                    <span>Inventory</span></a>
-                </li>
-    
-                <li>
-                    <a href=""><span class="las la-user-circle"></span> 
-                    <span>Inventory</span></a>
-                </li>
-    
-                <li>
-                    <a href=""><span class="las la-clipboard-list"></span> 
-                    <span>Tasks</span></a>
-                </li>
+
             </ul>
         </div>
     </div>
@@ -90,6 +71,7 @@
 
                             <div class="edit-button">
                                 <button data-toggle="modal" data-target="#exampleModal">Add <span class="las la-plus-circle" >
+                                <button data-toggle="modal" data-target="#ModalUpdate">Update <span class="las la-plus-circle" >
                                 <button data-toggle="modal" data-target="#ModalDelete">Delete <span class="las la-trash">
                             </div>
     
@@ -103,8 +85,11 @@
                                         <tr>
                                             <td>Id</td>
                                             <td>Name</td>
-                                            <td>Price</td>
+                                            <td>Image</td>
+                                            <td>Price ($)</td>
+                                            <td>Rating</td>
                                             <td>Stock</td>
+                                            <td>Ship Cost</td>
                                         </tr>
                                     </thead>
                                     <tbody id="product-body"></tbody>
@@ -133,7 +118,7 @@
                 <input type="number" placeholder="Enter ID" id="NewID">
                 <input type="text" placeholder="Enter Image Link" id="NewImage">
                 <input type="text" placeholder="Enter Product Name" id="NewName">
-                <input type="text" placeholder="Enter Price" id="NewPrice">
+                <input type="number" placeholder="Enter Price" id="NewPrice">
                 <input type="number" placeholder="Enter Rating" id="NewRating">
                 <input type="email" placeholder="Enter Stock" id="NewStock">
                 <input type="text" placeholder="Enter Description" id="NewDescription">
@@ -151,13 +136,40 @@
         <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             </div>
             <div class="modal-body">
                 <input type="number" placeholder="Enter ID of Item want to delete" id="RemoveID">
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="butn" id="RemoveItem">Remove Item</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ModalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Update Item</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <input type="number" placeholder="Enter ID" id="ID">
+                <input type="text" placeholder="Enter Image Link" id="UpdateImage">
+                <input type="text" placeholder="Enter Product Name" id="UpdateName">
+                <input type="text" placeholder="Enter Price" id="UpdatePrice">
+                <input type="number" placeholder="Enter Rating" id="UpdateRating">
+                <input type="email" placeholder="Enter Stock" id="UpdateStock">
+                <input type="text" placeholder="Enter Description" id="UpdateDescription">
+                <input type="text" placeholder="Enter FreeShipping Type" id="UpdateShipping">
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

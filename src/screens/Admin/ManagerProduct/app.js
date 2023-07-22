@@ -35,65 +35,77 @@ const Cart = document.getElementById("cart")
 const listProduct = collection(db, "Product")
 
 const AdvisorTable = document.getElementById("product-body")
+var stdNo = 0
+let stdPer = 0
 
-const FoodProduct = get(child(itemsRef, 'NewProduct/'))
-console.log(FoodProduct)
 
-let j = 0
 
-function getFoodProduct(){
-    AdvisorTable.innerHTML = ''
-    for(var i = 0; i < 100; i++, j++){
-        get(child(itemsRef, 'NewProduct/' + i)).then((snap) => {
-            if(snap.exists()){
-                let baseRow = ``
-                baseRow = `
-                <tr class="work">
-                    <td>${snap.val().id}</td>
-                    <td>${snap.val().name}</td>
-                    <td>${snap.val().price}</td>
-                    <td>${snap.val().stock}</td>
-                </tr>
-                `
-    
-                AdvisorTable.innerHTML += baseRow
-            }
-        })
-    }
-}
-
-function AddItemToTable(id, name, price, stock){
+function AddItemToTable(id, name, image ,price, rating, stock, shipping){
     let ItemRow = document.createElement("tr")
     let TdName = document.createElement("td")
     let TdID = document.createElement("td")
     let TdPrice = document.createElement("td")
     let TdStock = document.createElement("td")
+    let TdShipping = document.createElement("td")
+    let TdImage = document.createElement("td")
+    let TdRating = document.createElement("td")
+    let TdImg = document.createElement("img")
 
     TdName.innerHTML = name
     TdID.innerHTML = id
     TdPrice.innerHTML = price
     TdStock.innerHTML = stock
+    TdRating.innerHTML = rating
+    TdShipping.innerHTML = shipping
+
+    TdImg.src = image
+    TdImage.appendChild(TdImg)
 
     ItemRow.appendChild(TdID)
     ItemRow.appendChild(TdName)
+    ItemRow.appendChild(TdImage)
     ItemRow.appendChild(TdPrice)
+    ItemRow.appendChild(TdRating)
     ItemRow.appendChild(TdStock)
+    ItemRow.appendChild(TdShipping)
 
     AdvisorTable.appendChild(ItemRow)
 }
 
+function AddAllItemTable(Product){
+    AdvisorTable.innerHTML = ""
+    Product.forEach(element => {
+        AddItemToTable(element.id, element.name, element.image ,element.price, element.rating, element.stock, element.shipping);
+        stdNo += 1
+    })
+    
+    return stdNo
+}
+
+
+
+
+
 function GetAllData(){
     const itemsRef = ref(database)
+    
 
     get(child(itemsRef, "NewProduct"))
     .then((snapshot) =>{
         var product =[];
 
         snapshot.forEach(childSnapshot => {
-            
+            product.push(childSnapshot.val());
         });
+        AddAllItemTable(product)
     })
 }
+
+window.onload = GetAllData
+
+let getId = document.getElementsByTagName("tr")
+console.log(getId)
+
 
 
 
@@ -152,7 +164,7 @@ function AddAdvisor(){
         shipping: N_Shipping
     })
 
-    getFoodProduct()
+    GetAllData()
 }
 
 function DeleteAdvisor(){
@@ -161,18 +173,35 @@ function DeleteAdvisor(){
     remove(ref(database, 'NewProduct/' + IDRemove))
     .then(() => {
         alert("delete successfully")
-        getFoodProduct()
+        GetAllData
     })
     .catch((error) => {
         alert("Unsuccessful, error: " + error)
     })
 }
 
+function UpdateAdvisor(){
+    const U_ID = document.getElementById("UpdateID").value
+    const U_Image = document.getElementById("UpdateImage").value
+    const U_Name = document.getElementById("UpdateName").value
+    const U_Price = document.getElementById("UpdatePrice").value
+    const U_Rating = document.getElementById("UpdateRating").value
+    const U_Stock = document.getElementById("UpdateStock").value
+    const U_Description = document.getElementById("UpdateDescription").value
+    const U_Shipping = document.getElementById("UpdateShipping").value
+
+    update(ref(database, 'NewProduct/' + U_ID), {
+        last_login : dt,
+    })
+}
+
 document.getElementById("AddItem").addEventListener('click', AddAdvisor)
 document.getElementById("RemoveItem").addEventListener('click', DeleteAdvisor)
 
-getFoodProduct()
+document.getElementById("gotoUser").addEventListener('click', function(){
+    location.replace("../ManagerUser/index.html")
+})
 
-const IDList = document.getElementsByClassName("work")
-console.log(IDList)
-console.log(IDList.length)
+document.getElementById("gotoHome").addEventListener('click', function(){
+    location.replace("../index.html")
+})

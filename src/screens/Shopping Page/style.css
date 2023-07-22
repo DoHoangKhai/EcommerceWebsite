@@ -2,9 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap');
 
 :root {
-    --first-color: #ff6b6b;
-    --second-color: #794afa;
-    --second-dark-color: #453c5c;
+    --first-color: #ecd59f;
+    --second-color: #4682b4;
+    --second-dark-color: #1d4e89;
 
     --white-color: #ffffff;
     --light-bg-color: #f2f3f5;
@@ -374,7 +374,7 @@ nav .fly-item{
 
 #cart{
     position: absolute;
-    width: 300px;
+    width: 320px;
     height: fit-content;
     top: 100%;
     left: -170px;
@@ -452,7 +452,7 @@ nav .fly-item{
 .item-remove{
     font-size: 12px;
     position: absolute;
-    left: 270px;
+    left: 295px;
 }
 
 .thumbnail{
@@ -557,6 +557,15 @@ main{
     display: flex;
 }
 
+#all-item-show{
+    cursor: pointer;
+}
+
+#search-icon:hover{
+    color: var(--second-color);
+    cursor: pointer;
+}
+
 .product-imag{
     width: 165px;
     height: 100%;
@@ -564,8 +573,8 @@ main{
 }
 
 .product-imag img{
-    height: 100%;
-    width: 100%;
+    height: 160px;
+    width: 165px;
     object-fit: cover;
 }
 
@@ -675,6 +684,7 @@ footer .footer-box ul li{
     position: absolute;
     display: flex;
     flex-direction: column;
+    z-index: 10000;
 }
 
 .modal-detail{

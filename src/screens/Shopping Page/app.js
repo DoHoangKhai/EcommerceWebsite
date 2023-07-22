@@ -32,183 +32,277 @@ const listProduct = collection(db, "Product")
 
 const itemsRef = ref(database);
 
-let i = 0;
+let stdNo = 0;
+const AdvisorTable = document.getElementById("product-body")
 
-function getFoodProduct(){
-  for(var i = 0; i < 100; i++){
-      get(child(itemsRef, 'NewProduct/' + i)).then((snap) => {
-          if(snap.exists()){
-            const card = document.createElement("div");
-            card.classList.add("card-single")
-            card.setAttribute("id", snap.val().id);
+function AddItemToTable(id, name, image, price, stock, shipping, rating, description){
+  const card = document.createElement("div");
+  card.classList.add("card-single")
+  card.setAttribute("id", id);
 
-            const cardImage = document.createElement("div")
-            cardImage.classList.add("product-imag")
+  const cardImage = document.createElement("div")
+  cardImage.classList.add("product-imag")
 
-            const cardImg = document.createElement("img")
-            cardImg.src = snap.val().image
+  const cardImg = document.createElement("img")
+  cardImg.src = image
 
-            cardImage.appendChild(cardImg)
+  cardImage.appendChild(cardImg)
 
-            const nameProduct = document.createElement("h5")
-            nameProduct.innerText = snap.val().name
+  const nameProduct = document.createElement("h5")
+  nameProduct.innerText = name
 
-            nameProduct.addEventListener('click', function(){
-              const modal = document.createElement("div");
-              modal.setAttribute("class", "modal");
-              //Modal Product
+  nameProduct.addEventListener('click', function(){
+    const modal = document.createElement("div");
+    modal.setAttribute("class", "modal");
+    //Modal Product
 
-              const modalProduct = document.createElement("div")
-              modalProduct.classList.add("modal-item")
+    const modalProduct = document.createElement("div")
+    modalProduct.classList.add("modal-item")
 
-              const modalDetail = document.createElement("div")
-              modalDetail.classList.add("modal-detail")
+    const modalDetail = document.createElement("div")
+    modalDetail.classList.add("modal-detail")
 
-              const modalMore = document.createElement("div")
-              modalMore.classList.add("modal-desc")
-        
-              const modalImage = document.createElement("div")
-              modalImage.classList.add("modal-image")
+    const modalMore = document.createElement("div")
+    modalMore.classList.add("modal-desc")
 
-              const modalImg = document.createElement("img")
-              modalImg.src = snap.val().image
+    const modalImage = document.createElement("div")
+    modalImage.classList.add("modal-image")
 
-              modalImage.appendChild(modalImg)
-              
-              
+    const modalImg = document.createElement("img")
+    modalImg.src = image
 
-              const modalName = document.createElement("h3")
-              modalName.innerText = snap.val().name
-              modal.appendChild(modalName)
+    modalImage.appendChild(modalImg)
+    
+    
 
-              const modalPrice = document.createElement("h2")
-              modalPrice.innerText = "$" + snap.val().price
+    const modalName = document.createElement("h3")
+    modalName.innerText = name
+    modal.appendChild(modalName)
 
-              const modalStock = document.createElement("h4")
-              modalStock.innerText = "Remaining in stock: " + snap.val().stock
+    const modalPrice = document.createElement("h2")
+    modalPrice.innerText = "$" + price
 
-              const modalShipping = document.createElement("h4")
-              modalShipping.innerText = "Shipping: " + snap.val().freeshipping
+    const modalStock = document.createElement("h4")
+    modalStock.innerText = "Remaining in stock: " + stock
 
-              const modalRating = document.createElement("h4")
-              modalRating.innerText = "Rating: " + snap.val().rating +"/5"
+    const modalShipping = document.createElement("h4")
+    modalShipping.innerText = "Shipping: " + shipping
 
-              const modalDesc = document.createElement("h5")
-              modalDesc.innerText = "Product Detail"
+    const modalRating = document.createElement("h4")
+    modalRating.innerText = "Rating: " + rating +"/5"
 
-              const modalDescription = document.createElement("p")
-              modalDescription.innerText = snap.val().description
+    const modalDesc = document.createElement("h5")
+    modalDesc.innerText = "Product Detail"
 
-              const modalAddCart = document.createElement("button")
-              modalAddCart.classList.add("addCart")
-              modalAddCart.innerHTML = "Add to Cart"
-              // modalAddCart.addEventListener('click', addtocart(item.id))
-              modalAddCart.addEventListener('click', function(){
-                cart.push({...categories[snap.val().id]});
-                displaycart();
-              })
+    const modalDescription = document.createElement("p")
+    modalDescription.innerText = description
 
-              modalDetail.appendChild(modalName)
-              modalDetail.appendChild(modalStock)
-              modalDetail.appendChild(modalPrice)
-              modalDetail.appendChild(modalShipping)
-              modalDetail.appendChild(modalRating)
-              modalDetail.appendChild(modalAddCart)
-              
-              
-              modalProduct.appendChild(modalImage)
-              modalProduct.appendChild(modalDetail)
+    const modalAddCart = document.createElement("button")
+    modalAddCart.classList.add("addCart")
+    modalAddCart.innerHTML = "Add to Cart"
+    
+    modalAddCart.addEventListener('click', function(){
+      cart.push({...categories[id]});
+      displaycart();
+    })
 
-              // Description
-              modalMore.appendChild(modalDesc)
-              modalMore.appendChild(modalDescription)
-              
-              // Div button
-              const closeButton = document.createElement("button");
-              closeButton.setAttribute("type", "button");
-              closeButton.innerHTML = "Close";
-              modal.appendChild(closeButton);
+    modalDetail.appendChild(modalName)
+    modalDetail.appendChild(modalStock)
+    modalDetail.appendChild(modalPrice)
+    modalDetail.appendChild(modalShipping)
+    modalDetail.appendChild(modalRating)
+    modalDetail.appendChild(modalAddCart)
+    
+    
+    modalProduct.appendChild(modalImage)
+    modalProduct.appendChild(modalDetail)
+
+    // Description
+    modalMore.appendChild(modalDesc)
+    modalMore.appendChild(modalDescription)
+    
+    // Div button
+    const closeButton = document.createElement("button");
+    closeButton.setAttribute("type", "button");
+    closeButton.innerHTML = "Close";
+    modal.appendChild(closeButton);
 
 
-              const ButtonDiv = document.createElement("div")
-              ButtonDiv.classList.add("modal-button")
+    const ButtonDiv = document.createElement("div")
+    ButtonDiv.classList.add("modal-button")
 
-              ButtonDiv.appendChild(closeButton)
-              
+    ButtonDiv.appendChild(closeButton)
+    
 
-              modal.appendChild(modalProduct)
-              modal.appendChild(modalMore)
-              modal.appendChild(ButtonDiv)
-              
-              closeButton.addEventListener("click", function() {
-                modal.remove()
-              });
+    modal.appendChild(modalProduct)
+    modal.appendChild(modalMore)
+    modal.appendChild(ButtonDiv)
+    
+    closeButton.addEventListener("click", function() {
+      modal.remove()
+    });
 
-              document.getElementById(snap.val().id).appendChild(modal)
-            })
+    document.getElementById(id).appendChild(modal)
+  })
 
-            const rating = document.createElement("h6")
-            rating.classList.add("first")
-            rating.innerText = snap.val().rating + "/5"
+  const ratingDiv = document.createElement("h6")
+  ratingDiv.classList.add("first")
+  ratingDiv.innerText = rating + "/5"
 
-            const cost = document.createElement("h3")
-            cost.innerText = "$" + snap.val().price
+  const cost = document.createElement("h3")
+  cost.innerText = "$" + price
 
-            const stock = document.createElement("h6")
-            stock.innerText = snap.val().stock
+  const stockDiv = document.createElement("h6")
+  stockDiv.innerText = stock
 
-            const freeShipping = document.createElement("h6")
-            freeShipping.innerText = snap.val().shipping
+  const freeShipping = document.createElement("h6")
+  freeShipping.innerText = shipping
 
-            const ProductTitle = document.createElement("div")
-            ProductTitle.classList.add("product-title")
+  const ProductTitle = document.createElement("div")
+  ProductTitle.classList.add("product-title")
 
-            const BottomDetail = document.createElement("div")
-            BottomDetail.classList.add("bottom-detail")
-            BottomDetail.appendChild(stock)
-            BottomDetail.appendChild(freeShipping)
-            
-
-
-            ProductTitle.appendChild(nameProduct)
-            ProductTitle.appendChild(rating)
-            ProductTitle.appendChild(cost)
-            ProductTitle.appendChild(BottomDetail)
-            
+  const BottomDetail = document.createElement("div")
+  BottomDetail.classList.add("bottom-detail")
+  BottomDetail.appendChild(stockDiv)
+  BottomDetail.appendChild(freeShipping)
+  
 
 
-            card.appendChild(cardImage)
-            card.appendChild(ProductTitle)
+  ProductTitle.appendChild(nameProduct)
+  ProductTitle.appendChild(ratingDiv)
+  ProductTitle.appendChild(cost)
+  ProductTitle.appendChild(BottomDetail)
+  
 
-            document.getElementById("product-body").appendChild(card)
-          }
-      })
-  }
+
+  card.appendChild(cardImage)
+  card.appendChild(ProductTitle)
+
+  document.getElementById("product-body").appendChild(card)
+}
+
+function AddAllItemTable(Product){
+  stdNo = 0
+  AdvisorTable.innerHTML = ""
+  Product.forEach(element => {
+      AddItemToTable(element.id, element.name, element.image, element.price, element.stock, element.shipping, element.rating, element.description);
+  })
+}
+
+function GetAllData(){
+  const itemsRef = ref(database)
+
+  get(child(itemsRef, "NewProduct"))
+  .then((snapshot) =>{
+      var product =[];
+
+      snapshot.forEach(childSnapshot => {
+          product.push(childSnapshot.val());
+      });
+
+      AddAllItemTable(product)
+  })
+}
+
+window.onload = GetAllData
+
+// ALL DATA
+
+let str = "stopRightNow"
+let regEx = /^stop/
+
+let testVar = "stop"
+var regex = new RegExp("^" + testVar + "");
+console.log(regex)
+
+if(str.match(regex)){
+  console.log("match")
+}else{
+  console.log("Not match")
 }
 
 
+let categories =[];
+get(child(itemsRef, "NewProduct"))
+  .then((snapshot) =>{
+      
 
-const data = await getDocs(listProduct);
-let response =  data.docs.map((item) => item.data());
-console.log(response);
+      snapshot.forEach(childSnapshot => {
+          categories.push(childSnapshot.val());
+      });
+  })
 
 
-
-const categories = [...new Set(response.map((item) => 
-  {return item}))]
 console.log(categories)
 
 var cart = [];
 
-// function addtocart(a){
-//     cart.push({...categories[a]});
-//     displaycart();
-//     console.log(cart)
-// }
+/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
 
-function work(){
-  alert("work")
+function ShowSearchItem(){
+  const itemsRef = ref(database)
+  const searchInput = document.getElementById("searchProduct").value
+
+  get(child(itemsRef, "NewProduct"))
+  .then((snapshot) =>{
+      var product =[];
+
+      snapshot.forEach(childSnapshot => {
+          product.push(childSnapshot.val());
+      });
+
+      AddSearchItemTable(product, searchInput)
+  })
 }
+
+function AddSearchItemTable(Product, searched){
+  stdNo = 0
+  let len = 0 
+  let regExp =  new RegExp("^" + searched + "");
+  AdvisorTable.innerHTML = ""
+  Product.forEach(element => {
+      if(element.name.match(regExp)){
+        AddItemToTable(element.id, element.name, element.image, element.price, element.stock, element.shipping, element.rating, element.description);
+        len += 1
+      }
+      document.getElementById("title-cate").innerHTML = len + " Item found"
+  })
+}
+
+document.getElementById("search-icon").addEventListener('click', ShowSearchItem)
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+
+function ShowCateItem(categories){
+  const itemsRef = ref(database)
+
+  get(child(itemsRef, "NewProduct"))
+  .then((snapshot) =>{
+      var product =[];
+
+      snapshot.forEach(childSnapshot => {
+          product.push(childSnapshot.val());
+      });
+
+      AddCateItemTable(product, categories)
+  })
+}
+
+function AddCateItemTable(Product, categories){
+  stdNo = 0
+  AdvisorTable.innerHTML = ""
+  Product.forEach(element => {
+    if(element.cate == categories){
+      AddItemToTable(element.id, element.name, element.image, element.price, element.stock, element.shipping, element.rating, element.description);
+    }
+  })
+}
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+
 
 
 function displaycart(a){
@@ -223,6 +317,7 @@ function displaycart(a){
       document.getElementById("ul-mini").innerHTML = ''
         cart.map((items)=>
         {
+            
             var {id, image, name, price} = items;
             total = total + price;
             document.getElementById("total-cost").innerHTML = "$" + total
@@ -249,7 +344,7 @@ function displaycart(a){
             ItemPrice.classList.add("price")
 
             const ItemCost = document.createElement("span")
-            ItemCost.innerText = price
+            ItemCost.innerText = "$" + price
 
             ItemPrice.appendChild(ItemCost)
 
@@ -261,7 +356,7 @@ function displaycart(a){
 
             ItemTrash.appendChild(ItemTrashIcon)
             ItemTrashIcon.addEventListener('click', function(){
-              cart.splice(id, 1)
+              cart.splice(j++, 1)
               displaycart()
               console.log(cart)
             })
@@ -291,8 +386,6 @@ function delElement(a){
 
 
 document.getElementById("shop-cart").addEventListener('click', function(){
-
-
     if(Cart.style.display == 'block'){
         Cart.style.display = 'none'
     }else{
@@ -300,16 +393,28 @@ document.getElementById("shop-cart").addEventListener('click', function(){
     }
 })
 
-getFoodProduct()
-
 const shopping = document.getElementsByClassName("addCart")
 
 for(var p = 0; p < shopping.length; i++){
   shopping[p].addEventListener("click", addtocart(p))
 }
 
- 
 
+ document.getElementById("AmericaFood").addEventListener('click', function(){
+    ShowCateItem("America")
+ })
+
+ document.getElementById("IndiaFood").addEventListener('click', function(){
+    ShowCateItem("India")
+ })
+
+ document.getElementById("JapanFood").addEventListener('click', function(){
+    ShowCateItem("Japan")
+ })
+
+ document.getElementById("all-item-show").addEventListener('click', function(){
+    GetAllData()
+ })
 
 
 
