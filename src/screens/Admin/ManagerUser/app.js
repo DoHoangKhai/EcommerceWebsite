@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics.js";
-import { getDatabase, get, child, ref } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
+import { getDatabase, get, child, ref, set, update } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
 import { getDocs} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -29,45 +29,11 @@ const itemsRef = ref(database);
 
 const AdvisorTable = document.getElementById("product-body")
 
-const getDataProduct = async () => {
-    try{
-        // const data = await getDocs(listProduct);
-        const chicken = await  get(child(itemsRef, 'NewUsers/'))
-        // let response =  data.docs.map((item) => item.data());
-        console.log(chicken);
-  
-        const productsContainer = document.getElementById("product-body");
-  
-        // response.map((item) => {
-        //     const rowItem = document.createElement("tr");
-  
-        //     const ColName = document.createElement("td")
-        //     ColName.innerText = item.name
-  
-        //     const ColPrice = document.createElement("td")
-        //     ColPrice.innerText = "$"+item.price
-
-        //     const ColStock = document.createElement("td")
-        //     ColStock.innerText = item.stock + " Remaining"
-
-        //     rowItem.appendChild(ColName)
-        //     rowItem.appendChild(ColPrice)
-        //     rowItem.appendChild(ColStock)
-  
-        //     productsContainer.appendChild(rowItem)
-        // })
-    } catch (error) {
-        console.error("Error occure", error);
-        throw error;
-    }
-  
-};
-
 var stdNo = 0
 
 
 
-function AddItemToTable(id, username, age, email, phonenumber, address){
+function AddItemToTable(id, username, age, email, phonenumber, address, role, status){
     let ItemRow = document.createElement("tr")
     let TdName = document.createElement("td")
     let TdID = document.createElement("td")
@@ -75,6 +41,8 @@ function AddItemToTable(id, username, age, email, phonenumber, address){
     let TdEmail = document.createElement("td")
     let TdPhone = document.createElement("td")
     let TdAddress = document.createElement("td")
+    let TdRole = document.createElement("td")
+    let TdStatus = document.createElement("td")
 
     TdName.innerHTML = username
     TdID.innerHTML = id
@@ -83,12 +51,27 @@ function AddItemToTable(id, username, age, email, phonenumber, address){
     TdPhone.innerHTML = phonenumber
     TdAddress.innerHTML = address
 
+    if(role == 0){
+        TdRole.innerHTML = "User " + "- " + role
+    }else{
+        TdRole.innerHTML = "Admin " + "- " + role
+    }
+
+    if(status == 0){
+        TdStatus.innerHTML = "Banned " + "- " + status
+    }else{
+        TdStatus.innerHTML = "Active " + "- " + status
+    }
+
     ItemRow.appendChild(TdID)
     ItemRow.appendChild(TdName)
     ItemRow.appendChild(TdAge)
     ItemRow.appendChild(TdEmail)
     ItemRow.appendChild(TdPhone)
     ItemRow.appendChild(TdAddress)
+    ItemRow.appendChild(TdRole)
+    ItemRow.appendChild(TdStatus)
+
 
     AdvisorTable.appendChild(ItemRow)
 }
@@ -97,7 +80,7 @@ function AddAllItemTable(Product){
     stdNo = 0
     AdvisorTable.innerHTML = ""
     Product.forEach(element => {
-        AddItemToTable(element.id, element.username, element.age, element.email, element.phonenumber, element.address);
+        AddItemToTable(element.id, element.username, element.age, element.email, element.phonenumber, element.address, element.role, element.status);
     })
 }
 
@@ -116,35 +99,139 @@ function GetAllData(){
     })
 }
 
+
 window.onload = GetAllData
 
 
-function getUserProduct(){
-    AdvisorTable.innerHTML = ''
-    for(var i = 0; i < 100; i++){
-        get(child(itemsRef, 'NewUsers/' + i)).then((snap) => {
-            if(snap.exists()){
-                let baseRow = ``
-                baseRow = `
-                <tr class="work">
-                    <td>${snap.val().id}</td>
-                    <td>${snap.val().name}</td>
-                    <td>${snap.val().age}</td>
-                    <td>${snap.val().phonenum}</td>
-                </tr>
-                `
-    
-                AdvisorTable.innerHTML += baseRow
-            }
-        })
-    }
+async function AddUser() {
+    const N_ID = document.getElementById("NewID").value;
+    const N_Username = document.getElementById("NewUsername").value;
+    const N_Age = document.getElementById("NewAge").value;
+    const N_Email = document.getElementById("NewEmail").value;
+    const N_Phone = document.getElementById("NewPhone").value;
+    const N_Address = document.getElementById("NewAddress").value;
+    const N_Role = document.getElementById("NewRole").value;
+    const N_Status = document.getElementById("NewStatus").value;
+  
+    AdvisorTable.innerHTML = "";
+  
+    // if(N_ID == ''){
+    //     alert("ID must not be left empty")
+    //     return
+    // }
+  
+    // if(N_Name == ''){
+    //     alert("Advisor name must not be left empty")
+    //     return
+    // }
+  
+    // if(N_Company == ''){
+    //     alert("Company name must not be left empty")
+    //     return
+    // }
+  
+    // if(N_Fluffle == ''){
+    //     alert("Fluffle name must not be left empty")
+    //     return
+    // }
+  
+    // if(N_Customer == ''){
+    //     alert("Customer must not be left empty")
+    //     return
+    // }
+  
+    // if(N_Wallet == ''){
+    //     alert("Wallet must not be left empty")
+    //     return
+    // }
+  
+    set(ref(database, "Newusers/" + N_ID), {
+        id: N_ID,
+        username: N_Username,
+        age: N_Age,
+        email: N_Email,
+        phonenumber: N_Phone,
+        address: N_Address,
+        role: N_Role,
+        status: N_Status
+    });
+
+    alert("Add successful")
+  
+    GetAllData();
 }
 
+function UpdateUser() {
+    const U_ID = document.getElementById("UpID").value;
+    const UN_ID = document.getElementById("NewUpID").value;
+    const U_Username = document.getElementById("UpUsername").value;
+    const U_Age = document.getElementById("UpAge").value;
+    const U_Email = document.getElementById("UpEmail").value;
+    const U_Phone = document.getElementById("UpPhone").value;
+    const U_Address = document.getElementById("UpAddress").value;
+    const U_Role = document.getElementById("UpRole").value;
+    const U_Status = document.getElementById("UpStatus").value;
+  
+    if(UN_ID != ""){
+      update(ref(database, "Newusers/" + U_ID), {
+        id : UN_ID
+      });
+    }
+  
+    if(U_Username != ""){
+      update(ref(database, "Newusers/" + U_ID), {
+        username : U_Username
+      });
+    }
+  
+    if(U_Age != ""){
+      update(ref(database, "Newusers/" + U_ID), {
+        age : U_Age
+      });
+    }
+
+    if(U_Email != ""){
+        update(ref(database, "Newusers/" + U_ID), {
+          email : U_Email
+        });
+      }
+  
+    if(U_Phone != ""){
+      update(ref(database, "Newusers/" + U_ID), {
+        phonenumber : U_Phone
+      });
+    }
+  
+    if(U_Address != ""){
+      update(ref(database, "Newusers/" + U_ID), {
+        address : U_Address
+      });
+    }
+  
+    if(U_Role != ""){
+      update(ref(database, "Newusers/" + U_ID), {
+        role : U_Role
+      });
+    }
+  
+    if(U_Status != ""){
+      update(ref(database, "Newusers/" + U_ID), {
+        status : U_Status
+      });
+    }
+  
+    alert("Update successful")
+    GetAllData
+  }
 
 
 document.getElementById("gotoProduct").addEventListener('click', function(){
     location.replace("../ManagerProduct/index.html")
 })
+
+document.getElementById("UpdateUser").addEventListener('click', UpdateUser)
+
+document.getElementById("AddUser").addEventListener('click', AddUser)
 
 document.getElementById("gotoHome").addEventListener('click', function(){
     location.replace("../index.html")

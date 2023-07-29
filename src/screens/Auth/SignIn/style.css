@@ -12,7 +12,8 @@ body{
     height: 100vh;
     display: grid;
     grid-template-columns: 3fr 2fr;
-    background: #FFD834;
+    background: rgb(120,144,156);
+    background: linear-gradient(0deg, rgba(120,144,156,1) 10%, rgba(237,202,190,1) 40%);
 }
 
 .wrapper .logo{
@@ -22,21 +23,27 @@ body{
 }
 
 .wrapper .logo img{
-    object-fit: contain;
-    width: 550px;
-    height: 550px;
+    width: 650px;
+    height: 650px;
 }
 
 .wrapper .input-section{
     display: flex;
+    padding-left: 100px;
     flex-direction: column;
+    background-color: #78909c;
+    width: 600px;
+    height: 680px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    z-index: 100;
 }
 
 .wrapper .input-section h1{
     font-weight: 700;
     font-size: 26px;
     line-height: 32px;
-    color: #304D95;
+    color: #dad3cb;
     margin-top: 59px;
     margin-bottom: 0;
 }
@@ -45,14 +52,14 @@ body{
     font-weight: 400;
     font-size: 11px;
     line-height: 17px;
-    color: #304D95;
+    color: #dad3cb;
     margin-top: 9px;
 }
 
 .wrapper .input-section h5 a{
     text-decoration: none;
     cursor: pointer;
-    color: #FE904B;
+    color: #edc1b6;
 }
 
 .wrapper form{
@@ -64,7 +71,7 @@ body{
     font-weight: 400;
     font-size: 11px;
     line-height: 16px;
-    color: #304D95;
+    color: #dad3cb;
     margin-left: 8px;
 }
 
@@ -88,7 +95,7 @@ body{
     width: 80%;
     padding: 19px 20px;
     text-align: center;
-    background: linear-gradient(271.15deg, #FE904B 7.64%, #FB724C 90.68%), #EE5757;
+    background: linear-gradient(271.15deg, #fccbaf 7.64%, #f6dfcb 90.68%), #EE5757;
     backdrop-filter: blur(1.43525px);
     text-decoration: none;
     border-radius: 9px;
@@ -104,7 +111,7 @@ body{
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
-    color: #304D95;
+    color: #fccbaf;
     margin-top: 9px;
 }
 
@@ -147,13 +154,13 @@ body{
     font-weight: 700;
     font-size: 18px;
     line-height: 20px;
-    color: #304D95;
+    color: #dad3cb;
 }
 
 .seperate-section .line{
     width: 76px;
     height: 0px;
-    border: 0.7px solid #304D95;
+    border: 0.7px solid #dad3cb;
 }
 
 .btn{
@@ -165,8 +172,8 @@ body{
     width: 80%;
     padding: 19px 20px;
     text-align: center;
-    background: #E3F1FE;
-    border: 1.5px solid #207198;
+    background: #f6dfcb;
+    border: 1.5px solid #c7aeb4;
     backdrop-filter: blur(1.5px);
     border-radius: 9px;
     margin-bottom: 20px;
@@ -178,7 +185,7 @@ body{
     font-weight: 400;
     font-size: 18px;
     line-height: 20px;
-    color: #304D95;
+    color: #c7aeb4;
     position: relative;
 }
 

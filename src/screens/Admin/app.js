@@ -52,6 +52,8 @@ function AddItemToTable(name, price, stock){
 }
 
 
+
+
 function AddAllItemTable(Product){
     stdNo = 0
     AdvisorTable.innerHTML = ""
@@ -59,6 +61,7 @@ function AddAllItemTable(Product){
         AddItemToTable(element.name, element.price, element.stock);
     })
 }
+
 
 function GetAllData(){
     const itemsRef = ref(database)
@@ -74,8 +77,78 @@ function GetAllData(){
         AddAllItemTable(product)
     })
 }
+///////////////////////////////////////////////////////
 
-window.onload = GetAllData
+function AddUserToTable(name, email){
+    let UserRow = document.createElement("div")
+    let UserInfo = document.createElement("div")
+    let UserContact = document.createElement("div")
+    let UserTitle = document.createElement("div")
+    let UserImage = document.createElement("img")
+    let UserName = document.createElement("h4")
+    let UserEmail = document.createElement("small")
+    let IconComment = document.createElement("span")
+    let IconPhone = document.createElement("span")
+
+    UserRow.classList.add("customer")
+    UserInfo.classList.add("info")
+    UserContact.classList.add("contact")
+
+    UserImage.src = "../../../assets/Images/Sample_User_Icon.png"
+    UserImage.style.width = '40px'
+    UserImage.style.height = '40px'
+    UserName.innerHTML = name
+    UserEmail.innerHTML = email
+
+    IconComment.classList.add("las")
+    IconPhone.classList.add("las")
+    IconComment.classList.add("la-comment")
+    IconPhone.classList.add("la-phone")
+
+    UserTitle.appendChild(UserName)
+    UserTitle.appendChild(UserEmail)
+
+    UserInfo.appendChild(UserImage)
+    UserInfo.appendChild(UserTitle)
+
+    UserContact.appendChild(IconComment)
+    UserContact.appendChild(IconPhone)
+
+    UserRow.appendChild(UserInfo)
+    UserRow.appendChild(UserContact)
+
+
+    document.getElementById("user-body").appendChild(UserRow)
+}
+
+function AddAllUserTable(Product){
+    stdNo = 0
+    document.getElementById("user-body").innerHTML = ""
+    Product.forEach(element => {
+        AddUserToTable(element.username, element.email);
+    })
+}
+
+function GetAllUserData(){
+    const itemsRef = ref(database)
+
+    get(child(itemsRef, "Newusers"))
+    .then((snapshot) =>{
+        var productUser =[];
+
+        snapshot.forEach(childSnapshot => {
+            productUser.push(childSnapshot.val());
+        });
+
+        AddAllUserTable(productUser)
+    })
+}
+///////////////////////////////////////////////////////////////////////
+
+GetAllData()
+GetAllUserData()
+
+
 
 
 document.getElementById("gotoProduct").addEventListener('click', function(){
@@ -83,6 +156,18 @@ document.getElementById("gotoProduct").addEventListener('click', function(){
 })
 
 document.getElementById("gotoUser").addEventListener('click', function(){
+    location.replace("./ManagerUser/index.html")
+})
+
+document.getElementById("LogGoTo").addEventListener('click', function(){
+    location.replace("../Auth/SignIn/index.html")
+})
+
+document.getElementById("ProductGo").addEventListener('click', function(){
+    location.replace("./ManagerProduct/index.html")
+})
+
+document.getElementById("UserGo").addEventListener('click', function(){
     location.replace("./ManagerUser/index.html")
 })
 

@@ -73,6 +73,7 @@ function check(){
     let PhoneNumber = document.getElementById("PhoneNum").value;
     let Email = document.getElementById("email").value;
     let Password = document.getElementById("pass").value;
+    let Address = document.getElementById("address").value;
     let ConPassword = document.getElementById("con-pass").value;
     let ErrorText = ""
 
@@ -95,6 +96,14 @@ function check(){
     if(Email == ''){
         ErrorText = `Missing Input`
         Mail.innerHTML = ErrorText
+        return
+    }else{
+        Mail.innerHTML = ''
+    }
+
+    if(Address == ''){
+        ErrorText = `Missing Input`
+        Address.innerHTML = ErrorText
         return
     }else{
         Mail.innerHTML = ''
@@ -134,7 +143,10 @@ function check(){
             username: Username, 
             age: Age,
             phonenumber: PhoneNumber,
+            address: Address,
             email: Email,
+            role: 0,
+            status: 1
         })
 
         alert("Register Successful")

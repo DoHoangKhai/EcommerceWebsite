@@ -34,6 +34,7 @@ const itemsRef = ref(database);
 
 let stdNo = 0;
 const AdvisorTable = document.getElementById("product-body")
+const Notify = document.getElementById("alert")
 
 function AddItemToTable(id, name, image, price, stock, shipping, rating, description){
   const card = document.createElement("div");
@@ -104,6 +105,14 @@ function AddItemToTable(id, name, image, price, stock, shipping, rating, descrip
     modalAddCart.addEventListener('click', function(){
       cart.push({...categories[id]});
       displaycart();
+      document.getElementById("notification").innerText = 'Item Added successfully'
+      Notify.classList.remove("hide")
+      Notify.classList.add("show")
+      Notify.classList.add("showAlert")
+      setTimeout(function(){
+          Notify.classList.add("hide")
+          Notify.classList.remove("show")
+      }, 5000)
     })
 
     modalDetail.appendChild(modalName)
@@ -292,12 +301,30 @@ function ShowCateItem(categories){
 
 function AddCateItemTable(Product, categories){
   stdNo = 0
+  const BannerImg = document.getElementById("banner-cover")
   AdvisorTable.innerHTML = ""
   Product.forEach(element => {
     if(element.cate == categories){
       AddItemToTable(element.id, element.name, element.image, element.price, element.stock, element.shipping, element.rating, element.description);
     }
   })
+  document.getElementById("title-cate").innerHTML = categories + " Food"
+  
+  if(categories == "America"){
+    BannerImg.style.backgroundImage = "url(../../../assets/Images/americabg.jpg)"
+  }
+
+  if(categories == "Vietnam"){
+    BannerImg.style.backgroundImage = "url(../../../assets/Images/vietnambg.jpg)"
+  }
+
+  if(categories == "India"){
+    BannerImg.style.backgroundImage = "url(../../../assets/Images/indiabg.jpg)"
+  }
+
+  if(categories == "Japan"){
+    BannerImg.style.backgroundImage = "url(../../../assets/Images/japanbg.jpg)"
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -314,14 +341,14 @@ function displaycart(a){
         document.getElementById('total-cost').innerHTML = "$" + 0
         document.getElementById('cart-total').innerHTML = 0
     }else{
+      
       document.getElementById("ul-mini").innerHTML = ''
         cart.map((items)=>
         {
-            
             var {id, image, name, price} = items;
             total = total + price;
-            document.getElementById("total-cost").innerHTML = "$" + total
-            document.getElementById("cart-total").innerHTML = total
+            document.getElementById("total-cost").innerHTML = "$" + total.toFixed(2)
+            document.getElementById("cart-total").innerHTML = total.toFixed(2)
 
             //div
             const ItemCart = document.createElement("div")
@@ -399,6 +426,10 @@ for(var p = 0; p < shopping.length; i++){
   shopping[p].addEventListener("click", addtocart(p))
 }
 
+document.getElementById("close-button").addEventListener('click', function(){
+  Notify.classList.add("hide")
+  Notify.classList.remove("show")
+})
 
  document.getElementById("AmericaFood").addEventListener('click', function(){
     ShowCateItem("America")
@@ -412,9 +443,24 @@ for(var p = 0; p < shopping.length; i++){
     ShowCateItem("Japan")
  })
 
- document.getElementById("all-item-show").addEventListener('click', function(){
-    GetAllData()
+ document.getElementById("VietnamFood").addEventListener('click', function(){
+    ShowCateItem("Vietnam")
  })
+
+ document.getElementById("head-logout").addEventListener('click', function(){
+    location.replace("../Auth/SignIn/index.html")
+ })
+
+ document.getElementById("checkout").addEventListener('click', function(){
+    document.getElementById("notification").innerText = 'Order purchased successfully'
+    Notify.classList.remove("hide")
+    Notify.classList.add("show")
+    Notify.classList.add("showAlert")
+    setTimeout(function(){
+        Notify.classList.add("hide")
+        Notify.classList.remove("show")
+    }, 5000)
+})
 
 
 

@@ -286,22 +286,26 @@ tr td:last-child{
     background: orangered;
 }
 
+.edit-button .las.la-trash{
+    font-size: 15px;
+}
+
+.las.la-trash{
+    font-size: 20px;
+}
+
 .table-responsive{
     width: 100%;
     overflow-x: auto;
 }
 
-#gotoUser{
+#gotoUser, #gotoHome, #gotoLogin{
     color: #fff;
     cursor: pointer;
 }
 
-#gotoHome{
-    color: #fff;
-    cursor: pointer;
-}
 
-#gotoUser:hover{
+#gotoUser:hover, #gotoHome:hover, #gotoLogin:hover{
     text-decoration: underline;
 }
 

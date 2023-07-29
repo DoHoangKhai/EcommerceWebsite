@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/af3bdff4d6.js" crossorigin="anonymous"></script>
 <body>
 
     <input type="checkbox" id="nav-toggle">
@@ -28,8 +29,13 @@
                 </li>
                 
                 <li>
-                    <a href=""  class="active"><span class="las la-shopping-bag"></span> 
+                    <a href="" class="active"><span class="las la-shopping-bag"></span> 
                     <span>Product</span></a>
+                </li>
+
+                <li>
+                    <a href="" id="gotoLogin"><i class="fa-solid fa-arrow-right-from-bracket" style="padding-right: 1rem;"></i></span>
+                    <span id="gotoLogin">Logout</span></a>
                 </li>
 
             </ul>
@@ -72,7 +78,6 @@
                             <div class="edit-button">
                                 <button data-toggle="modal" data-target="#exampleModal">Add <span class="las la-plus-circle" >
                                 <button data-toggle="modal" data-target="#ModalUpdate">Update <span class="las la-plus-circle" >
-                                <button data-toggle="modal" data-target="#ModalDelete">Delete <span class="las la-trash">
                             </div>
     
                             </span></button>
@@ -90,6 +95,8 @@
                                             <td>Rating</td>
                                             <td>Stock</td>
                                             <td>Ship Cost</td>
+                                            <td>Category</td>
+                                            <td>Action</td>
                                         </tr>
                                     </thead>
                                     <tbody id="product-body"></tbody>
@@ -123,6 +130,16 @@
                 <input type="email" placeholder="Enter Stock" id="NewStock">
                 <input type="text" placeholder="Enter Description" id="NewDescription">
                 <input type="text" placeholder="Enter FreeShipping Type" id="NewShipping">
+
+                <div class="radio-cate">
+                    <label for="foodType">Choose FoodType</label>
+                    <select id="foodType" name="foodType">
+                        <option value="America">America</option>
+                        <option value="Vietnam">Vietnam</option>
+                        <option value="India">India</option>
+                        <option value="Japan">Japan</option>
+                    </select>
+                </div>
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -132,25 +149,6 @@
         </div>
     </div>
 
-    <div class="modal fade" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>
-            <div class="modal-body">
-                <input type="number" placeholder="Enter ID of Item want to delete" id="RemoveID">
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="butn" id="RemoveItem">Remove Item</button>
-            </div>
-        </div>
-        </div>
-    </div>
 
     <div class="modal fade" id="ModalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -162,7 +160,7 @@
             </button>
             </div>
             <div class="modal-body">
-                <input type="number" placeholder="Enter ID" id="ID">
+                <input type="number" placeholder="Enter ID" id="UpdateID">
                 <input type="text" placeholder="Enter Image Link" id="UpdateImage">
                 <input type="text" placeholder="Enter Product Name" id="UpdateName">
                 <input type="text" placeholder="Enter Price" id="UpdatePrice">
@@ -170,10 +168,21 @@
                 <input type="email" placeholder="Enter Stock" id="UpdateStock">
                 <input type="text" placeholder="Enter Description" id="UpdateDescription">
                 <input type="text" placeholder="Enter FreeShipping Type" id="UpdateShipping">
+
+                <div class="radio-cate">
+                    <label for="foodTypeUp">Choose FoodType</label>
+                    <select id="foodTypeUp" name="foodType">
+                        <option value="">No change</option>
+                        <option value="America">America</option>
+                        <option value="Vietnam">Vietnam</option>
+                        <option value="India">India</option>
+                        <option value="Japan">Japan</option>
+                    </select>
+                </div>
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="butn" id="RemoveItem">Remove Item</button>
+            <button type="button" class="butn" id="UpdateItem">Update Item</button>
             </div>
         </div>
         </div>

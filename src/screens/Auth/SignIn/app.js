@@ -1,4 +1,4 @@
-import { getDatabase, update, ref } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
+import { getDatabase, update, ref, get, child } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 
@@ -18,6 +18,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth();
+const dbRef = ref(database)
 
 const MailBox = document.getElementById("email-text")
 const PassBox = document.getElementById("pass-text")
@@ -49,14 +50,35 @@ function check(){
     signInWithEmailAndPassword(auth, Mail, Pass)
   .then((userCredential) => {
     const user = userCredential.user;
+    console.log(user.uid)
+
+
+    get(child(dbRef, "Newusers/" + user.uid)).then((snapshot) =>{
+      if(snapshot.val().status == 0){
+        alert("User Banned")
+        return
+      }
+
+      if(snapshot.val().role == 0){
+        const dt = new Date()
+        update(ref(database, 'users/' + user.uid), {
+          last_login : dt,
+        })
     
-    const dt = new Date()
-    update(ref(database, 'users/' + user.uid), {
-      last_login : dt,
+        alert("User Loged in")
+        location.replace("../../Shopping Page/index.html")
+      }else if(snapshot.val().role == 1){
+        const dt = new Date()
+        update(ref(database, 'users/' + user.uid), {
+          last_login : dt,
+        })
+    
+        alert("Admin Loged in")
+        location.replace("../../Admin/index.html")
+      }
     })
 
-    alert("User Loged in")
-    location.replace("../../Shopping Page/index.html")
+
   })
   .catch((error) => {
     const errorCode = error.code;

@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/af3bdff4d6.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
 
@@ -34,6 +36,10 @@
                     <span>Product</span></a>
                 </li>
 
+                <li>
+                    <a href="" id="gotoLogin"><i class="fa-solid fa-arrow-right-from-bracket" style="padding-right: 1rem;"></i></span>
+                    <span>Logout</span></a>
+                </li>
             </ul>
         </div>
     </div>
@@ -89,6 +95,8 @@
                                             <td>Email</td>
                                             <td>PhoneNumber</td>
                                             <td>Address</td>
+                                            <td>Role</td>
+                                            <td>Status</td>
                                         </tr>
                                     </thead>
                                     <tbody id="product-body"></tbody>
@@ -105,24 +113,25 @@
         <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Update User</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             </div>
             <div class="modal-body">
-                <input type="number" placeholder="Enter ID" id="NewID">
-                <input type="text" placeholder="Enter Image Link" id="NewImage">
-                <input type="text" placeholder="Enter Product Name" id="NewName">
-                <input type="text" placeholder="Enter Price" id="NewPrice">
-                <input type="number" placeholder="Enter Rating" id="NewRating">
-                <input type="email" placeholder="Enter Stock" id="NewStock">
-                <input type="text" placeholder="Enter Description" id="NewDescription">
-                <input type="text" placeholder="Enter FreeShipping Type" id="NewShipping">
+                <input type="text" placeholder="Enter ID" id="UpID">
+                <input type="text" placeholder="Enter New ID" id="NewUpID">
+                <input type="text" placeholder="Enter Username" id="UpUsername">
+                <input type="number" placeholder="Enter User Age" id="UpAge">
+                <input type="email" placeholder="Enter Email" id="UpEmail">
+                <input type="number" placeholder="Enter Phone Number" id="UpPhone">
+                <input type="text" placeholder="Enter Address" id="UpAddress">
+                <input type="number" placeholder="Enter Role" id="UpRole">
+                <input type="number" placeholder="Enter Status" id="UpStatus">
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="butn" id="AddItem">Add Item</button>
+            <button type="button" class="butn" id="UpdateUser">Update User</button>
             </div>
         </div>
         </div>
@@ -132,24 +141,24 @@
         <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalLabel">New User</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             </div>
             <div class="modal-body">
-                <input type="number" placeholder="Enter ID" id="NewID">
-                <input type="text" placeholder="Enter Image Link" id="NewImage">
-                <input type="text" placeholder="Enter Product Name" id="NewName">
-                <input type="text" placeholder="Enter Price" id="NewPrice">
-                <input type="number" placeholder="Enter Rating" id="NewRating">
-                <input type="email" placeholder="Enter Stock" id="NewStock">
-                <input type="text" placeholder="Enter Description" id="NewDescription">
-                <input type="text" placeholder="Enter FreeShipping Type" id="NewShipping">
+                <input type="text" placeholder="Enter ID" id="NewID">
+                <input type="text" placeholder="Enter Username" id="NewUsername">
+                <input type="number" placeholder="Enter User Age" id="NewAge">
+                <input type="email" placeholder="Enter Email" id="NewEmail">
+                <input type="number" placeholder="Enter Phone Number" id="NewPhone">
+                <input type="text" placeholder="Enter Address" id="NewAddress">
+                <input type="number" placeholder="Enter Role" id="NewRole">
+                <input type="number" placeholder="Enter Status" id="NewStatus">
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="butn" id="RemoveItem">Remove Item</button>
+            <button type="button" class="butn" id="AddUser">Add User</button>
             </div>
         </div>
         </div>

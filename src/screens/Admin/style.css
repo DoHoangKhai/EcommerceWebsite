@@ -136,6 +136,14 @@ header label span{
     overflow-x: hidden;
 }
 
+#UserGo, #ProductGo{
+    cursor: pointer;
+}
+
+#UserGo:hover, #ProductGo:hover{
+    text-decoration: underline;
+}
+
 .search-wrapper span{
     display: inline-block;
     padding: 0rem 1rem;

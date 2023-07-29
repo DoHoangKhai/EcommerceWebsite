@@ -6,6 +6,7 @@
     <title>E-commerce Admin</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <script src="https://kit.fontawesome.com/af3bdff4d6.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -21,15 +22,20 @@
                     <a href="" class="active"><span class="las la-igloo"></span> 
                     <span>Dashboard</span></a>
                 </li>
-    
-                <li>
-                    <a href=""><span class="las la-users"></span> 
-                    <span>Customers</span></a>
+
+                <li >
+                    <a><span class="las la-users"></span> 
+                    <span id="UserGo">Customers</span></a>
                 </li>
                 
+                <li >
+                    <a><span class="las la-shopping-bag"></span> 
+                    <span id="ProductGo" style="cursor: pointer;">Product</span></a>
+                </li>
+
                 <li>
-                    <a href=""><span class="las la-shopping-bag"></span> 
-                    <span>Product</span></a>
+                    <a><i class="fa-solid fa-arrow-right-from-bracket" style="padding-right: 1rem;"></i></span>
+                    <span id="LogGoTo">Logout</span></a>
                 </li>
             </ul>
         </div>
@@ -140,17 +146,17 @@
                             </span></button>
                         </div>
 
-                        <div class="card-body">
+                        <div class="card-body" id="user-body">
+
                             <div class="customer">
                                 <div class="info">
-                                    <img src="../../../assets/image/AdminAvatar.jpg" width="40px" height="40px">
+                                    <img src="../../../assets/Images/Sample_User_Icon.png" width="40px" height="40px">
                                     <div>
                                         <h4>Lewis S. Cunningham</h4>
                                         <small>CEO Excerpt</small>
                                     </div>
                                 </div>
                                 <div class="contact">
-                                    <span class="las la-user-circle"></span>
                                     <span class="las la-comment"></span>
                                     <span class="las la-phone"></span>                      
                                 </div>
@@ -165,97 +171,6 @@
                                     </div>
                                 </div>
                                 <div class="contact">
-                                    <span class="las la-user-circle"></span>
-                                    <span class="las la-comment"></span>
-                                    <span class="las la-phone"></span>                      
-                                </div>
-                            </div>
-
-                            <div class="customer">
-                                <div class="info">
-                                    <img src="../../../assets/image/AdminAvatar.jpg" width="40px" height="40px">
-                                    <div>
-                                        <h4>Lewis S. Cunningham</h4>
-                                        <small>CEO Excerpt</small>
-                                    </div>
-                                </div>
-                                <div class="contact">
-                                    <span class="las la-user-circle"></span>
-                                    <span class="las la-comment"></span>
-                                    <span class="las la-phone"></span>                      
-                                </div>
-                            </div>
-
-                            <div class="customer">
-                                <div class="info">
-                                    <img src="../../../assets/image/AdminAvatar.jpg" width="40px" height="40px">
-                                    <div>
-                                        <h4>Lewis S. Cunningham</h4>
-                                        <small>CEO Excerpt</small>
-                                    </div>
-                                </div>
-                                <div class="contact">
-                                    <span class="las la-user-circle"></span>
-                                    <span class="las la-comment"></span>
-                                    <span class="las la-phone"></span>                      
-                                </div>
-                            </div>
-
-                            <div class="customer">
-                                <div class="info">
-                                    <img src="../../../assets/image/AdminAvatar.jpg" width="40px" height="40px">
-                                    <div>
-                                        <h4>Lewis S. Cunningham</h4>
-                                        <small>CEO Excerpt</small>
-                                    </div>
-                                </div>
-                                <div class="contact">
-                                    <span class="las la-user-circle"></span>
-                                    <span class="las la-comment"></span>
-                                    <span class="las la-phone"></span>                      
-                                </div>
-                            </div>
-
-                            <div class="customer">
-                                <div class="info">
-                                    <img src="../../../assets/image/AdminAvatar.jpg" width="40px" height="40px">
-                                    <div>
-                                        <h4>Lewis S. Cunningham</h4>
-                                        <small>CEO Excerpt</small>
-                                    </div>
-                                </div>
-                                <div class="contact">
-                                    <span class="las la-user-circle"></span>
-                                    <span class="las la-comment"></span>
-                                    <span class="las la-phone"></span>                      
-                                </div>
-                            </div>
-
-                            <div class="customer">
-                                <div class="info">
-                                    <img src="../../../assets/image/AdminAvatar.jpg" width="40px" height="40px">
-                                    <div>
-                                        <h4>Lewis S. Cunningham</h4>
-                                        <small>CEO Excerpt</small>
-                                    </div>
-                                </div>
-                                <div class="contact">
-                                    <span class="las la-user-circle"></span>
-                                    <span class="las la-comment"></span>
-                                    <span class="las la-phone"></span>                      
-                                </div>
-                            </div>
-
-                            <div class="customer">
-                                <div class="info">
-                                    <img src="../../../assets/image/AdminAvatar.jpg" width="40px" height="40px">
-                                    <div>
-                                        <h4>Lewis S. Cunningham</h4>
-                                        <small>CEO Excerpt</small>
-                                    </div>
-                                </div>
-                                <div class="contact">
-                                    <span class="las la-user-circle"></span>
                                     <span class="las la-comment"></span>
                                     <span class="las la-phone"></span>                      
                                 </div>
