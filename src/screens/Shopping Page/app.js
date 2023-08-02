@@ -36,7 +36,7 @@ let stdNo = 0;
 const AdvisorTable = document.getElementById("product-body")
 const Notify = document.getElementById("alert")
 
-function AddItemToTable(id, name, image, price, stock, shipping, rating, description){
+function AddItemToTable(id, name, image, price, stock, shipping, rating, description, category){
   const card = document.createElement("div");
   card.classList.add("card-single")
   card.setAttribute("id", id);
@@ -93,7 +93,7 @@ function AddItemToTable(id, name, image, price, stock, shipping, rating, descrip
     modalRating.innerText = "Rating: " + rating +"/5"
 
     const modalDesc = document.createElement("h5")
-    modalDesc.innerText = "Product Detail"
+    modalDesc.innerText = "Category: " + category + " Food"
 
     const modalDescription = document.createElement("p")
     modalDescription.innerText = description
@@ -194,7 +194,7 @@ function AddAllItemTable(Product){
   stdNo = 0
   AdvisorTable.innerHTML = ""
   Product.forEach(element => {
-      AddItemToTable(element.id, element.name, element.image, element.price, element.stock, element.shipping, element.rating, element.description);
+      AddItemToTable(element.id, element.name, element.image, element.price, element.stock, element.shipping, element.rating, element.description, element.cate);
   })
 }
 

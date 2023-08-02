@@ -14,6 +14,11 @@ const firebaseConfig = {
   measurementId: "G-GBEFH4S9Z0"
 };
 
+const SuperAdmin = {
+  email: "SuperAdmin@gmail.com",
+  password: "123456"
+}
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
@@ -47,13 +52,17 @@ function check(){
     let Mail = document.getElementById("email").value;
     let Pass = document.getElementById("pass").value;
 
-    signInWithEmailAndPassword(auth, Mail, Pass)
-  .then((userCredential) => {
-    const user = userCredential.user;
-    console.log(user.uid)
+    if(Mail == SuperAdmin.email && Pass == SuperAdmin.password){
+      alert("Super Admin granted")
+      location.replace("../../Admin/index.html")
+    }else{
+      signInWithEmailAndPassword(auth, Mail, Pass)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user.uid)
 
 
-    get(child(dbRef, "Newusers/" + user.uid)).then((snapshot) =>{
+      get(child(dbRef, "Newusers/" + user.uid)).then((snapshot) =>{
       if(snapshot.val().status == 0){
         alert("User Banned")
         return
@@ -79,13 +88,14 @@ function check(){
     })
 
 
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
 
-    alert(errorMessage)
-  });
+      alert(errorMessage)
+    });
+    }
 }
 
 ButtonLogin.addEventListener('click', check)
