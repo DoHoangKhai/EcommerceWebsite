@@ -325,6 +325,10 @@ function AddCateItemTable(Product, categories){
   if(categories == "Japan"){
     BannerImg.style.backgroundImage = "url(../../../assets/Images/japanbg.jpg)"
   }
+
+  if(categories == "Other"){
+    BannerImg.style.backgroundImage = "url(../../../assets/Images/OtherFood.jpg)"
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -445,6 +449,10 @@ document.getElementById("close-button").addEventListener('click', function(){
 
  document.getElementById("VietnamFood").addEventListener('click', function(){
     ShowCateItem("Vietnam")
+ })
+
+ document.getElementById("OtherFood").addEventListener('click', function(){
+  ShowCateItem("Other")
  })
 
  document.getElementById("head-logout").addEventListener('click', function(){
