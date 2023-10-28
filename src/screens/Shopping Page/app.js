@@ -162,7 +162,7 @@ function AddItemToTable(id, name, image, price, stock, shipping, rating, descrip
   cost.innerText = "$" + price
 
   const stockDiv = document.createElement("h6")
-  stockDiv.innerText = stock
+  stockDiv.innerText = "Remaining Stock: " + stock
 
   const freeShipping = document.createElement("h6")
   freeShipping.innerText = shipping

@@ -318,6 +318,22 @@ tr td:last-child{
     overflow-x: auto;
 }
 
+#LogGoTo, .fa-solid.fa-arrow-right-from-bracket{
+    color: white;
+}
+
+#LogGoTo:hover{
+    text-decoration: underline;
+}
+
+.butn{
+    background-color: var(--main-color);
+    padding: 7px;
+    border-radius: 4px;
+    border: none;
+    color: #fff;
+}
+
 .customer{
     display: flex;
     justify-content: space-between;

@@ -3,6 +3,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebas
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics.js";
 import { getDatabase, get, child, ref, set, update } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
 import { getDocs} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -23,7 +25,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-
+const auth = getAuth();
 const database = getDatabase(app);
 const itemsRef = ref(database);
 
@@ -114,6 +116,7 @@ async function AddUser() {
     const N_Status = document.getElementById("NewStatus").value;
   
     AdvisorTable.innerHTML = "";
+    const Password = '00000000'
   
     // if(N_ID == ''){
     //     alert("ID must not be left empty")
@@ -156,7 +159,19 @@ async function AddUser() {
         status: N_Status
     });
 
-    alert("Add successful")
+    createUserWithEmailAndPassword(auth, N_Email, Password)
+    .then((success) => {
+        const user = success.user
+        console.log(user.uid)
+    })
+
+    .catch((error) => {
+      console.log(error);
+      const errorMessage = error.message;
+      alert(errorMessage);
+    });
+
+    alert("Add successful, Password is: " + Password)
   
     GetAllData();
 }
@@ -236,4 +251,9 @@ document.getElementById("AddUser").addEventListener('click', AddUser)
 document.getElementById("gotoHome").addEventListener('click', function(){
     location.replace("../index.html")
 })
+
+document.getElementById("LogGoTo").addEventListener('click', function(){
+  location.replace("../../Auth/SignIn/index.html")
+})
+
 
